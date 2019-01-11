@@ -69,4 +69,3 @@ var FighterBgMap = (function (_super) {
     return FighterBgMap;
 }(egret.Sprite));
 __reflect(FighterBgMap.prototype, "FighterBgMap");
-//# sourceMappingURL=FighterBgMap.js.map

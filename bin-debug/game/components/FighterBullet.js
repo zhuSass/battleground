@@ -44,4 +44,3 @@ var FighterBullet = (function (_super) {
     return FighterBullet;
 }(egret.Bitmap));
 __reflect(FighterBullet.prototype, "FighterBullet");
-//# sourceMappingURL=FighterBullet.js.map

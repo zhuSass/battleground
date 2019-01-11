@@ -16,4 +16,3 @@ var ResourceUtils = (function () {
     return ResourceUtils;
 }());
 __reflect(ResourceUtils.prototype, "ResourceUtils");
-//# sourceMappingURL=ResourceUtils.js.map

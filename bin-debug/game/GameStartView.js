@@ -85,7 +85,7 @@ var GameStartView = (function (_super) {
     };
     GameStartView.prototype.onLoadBtnComplete = function (event) {
         this.isBtnSoundDone = true; // 加载完成
-        this.onButtonClick();
+        // this.onButtonClick();
     };
     /**
      * 点击按钮
@@ -106,4 +106,3 @@ var GameStartView = (function (_super) {
     return GameStartView;
 }(egret.Sprite));
 __reflect(GameStartView.prototype, "GameStartView");
-//# sourceMappingURL=GameStartView.js.map

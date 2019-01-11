@@ -33,4 +33,3 @@ var GamePlayView = (function (_super) {
     return GamePlayView;
 }(egret.Sprite));
 __reflect(GamePlayView.prototype, "GamePlayView");
-//# sourceMappingURL=GamePlayView.js.map

@@ -76,17 +76,21 @@ var FighterAirplane = (function (_super) {
     FighterAirplane.prototype.destroyAirplane = function (parentView, isDestroy) {
         var _this = this;
         if (isDestroy === void 0) { isDestroy = true; }
+        // 
+        var channe;
         if (isDestroy) {
+            // 爆炸粒子
             this.createExplodeParticle();
             this.addChild(this.particleExplode);
             this.particleExplode.start();
+            // 爆炸声
+            channe = FighterAirplane.explodeSound[this.airplaneType].play(0, 1);
+            channe.volume = 0.5;
         }
-        var channe = FighterAirplane.explodeSound[this.airplaneType].play(0, 1);
-        channe.volume = 0.5;
         var timer = new egret.Timer(500, 1);
         timer.addEventListener(egret.TimerEvent.TIMER, function () {
-            channe.stop();
             if (isDestroy) {
+                channe.stop();
                 parentView.removeChild(_this);
             }
         }, this);
@@ -129,4 +133,3 @@ var FighterAirplane = (function (_super) {
     return FighterAirplane;
 }(egret.Sprite));
 __reflect(FighterAirplane.prototype, "FighterAirplane");
-//# sourceMappingURL=FighterAirplane.js.map

@@ -13,4 +13,3 @@ var Const = (function () {
     return Const;
 }());
 __reflect(Const.prototype, "Const");
-//# sourceMappingURL=Const.js.map

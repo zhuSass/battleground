@@ -284,4 +284,3 @@ var GameFightOneView = (function (_super) {
     return GameFightOneView;
 }(egret.Sprite));
 __reflect(GameFightOneView.prototype, "GameFightOneView");
-//# sourceMappingURL=GameFightOneView.js.map

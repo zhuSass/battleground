@@ -48,9 +48,9 @@ var LoadingUI = (function (_super) {
         this.addChild(this.textField);
         console.log(Const.SCENT_WIDTH);
         this.textField.y = 300;
-        this.textField.width = 480;
-        this.textField.height = 100;
-        this.textField.textAlign = "right";
+        this.textField.width = Const.SCENT_WIDTH;
+        this.textField.height = Const.SCENT_HEIGHT;
+        this.textField.textAlign = "center";
     };
     LoadingUI.prototype.onProgress = function (current, total) {
         this.textField.text = "Loading..." + current + "/" + total;
@@ -58,4 +58,3 @@ var LoadingUI = (function (_super) {
     return LoadingUI;
 }(egret.Sprite));
 __reflect(LoadingUI.prototype, "LoadingUI", ["RES.PromiseTaskReporter"]);
-//# sourceMappingURL=LoadingUI.js.map
