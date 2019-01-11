@@ -1,0 +1,115 @@
+{
+	"resources": [
+		{
+			"name": "addition1_png",
+			"type": "image",
+			"url": "assets/addition/addition1.png"
+		},
+		{
+			"name": "addition2_png",
+			"type": "image",
+			"url": "assets/addition/addition2.png"
+		},
+		{
+			"name": "airplane1_png",
+			"type": "image",
+			"url": "assets/airplane/airplane1.png"
+		},
+		{
+			"name": "airplane2_png",
+			"type": "image",
+			"url": "assets/airplane/airplane2.png"
+		},
+		{
+			"name": "airplane3_png",
+			"type": "image",
+			"url": "assets/airplane/airplane3.png"
+		},
+		{
+			"name": "explode1_mp3",
+			"type": "sound",
+			"url": "assets/Audio/explode/explode1.mp3"
+		},
+		{
+			"name": "explode2_mp3",
+			"type": "sound",
+			"url": "assets/Audio/explode/explode2.mp3"
+		},
+		{
+			"name": "explode3_mp3",
+			"type": "sound",
+			"url": "assets/Audio/explode/explode3.mp3"
+		},
+		{
+			"name": "bullet1_png",
+			"type": "image",
+			"url": "assets/bullet/bullet1.png"
+		},
+		{
+			"name": "bullet2_png",
+			"type": "image",
+			"url": "assets/bullet/bullet2.png"
+		},
+		{
+			"name": "btn_click_1_mp3",
+			"type": "sound",
+			"url": "assets/button/btn_click_1.mp3"
+		},
+		{
+			"name": "button_login_png",
+			"type": "image",
+			"url": "assets/button/button_login.png"
+		},
+		{
+			"name": "egret_icon_png",
+			"type": "image",
+			"url": "assets/egret_icon.png"
+		},
+		{
+			"name": "login_bg_jpg",
+			"type": "image",
+			"url": "assets/login_bg.jpg"
+		},
+		{
+			"name": "fighter_bg_map1_jpg",
+			"type": "image",
+			"url": "assets/map/fighter_bg_map1.jpg"
+		},
+		{
+			"name": "fighter_bg_map2_jpg",
+			"type": "image",
+			"url": "assets/map/fighter_bg_map2.jpg"
+		},
+		{
+			"name": "fighter_bg_map3_png",
+			"type": "image",
+			"url": "assets/map/fighter_bg_map3.png"
+		},
+		{
+			"name": "particle_1_json",
+			"type": "json",
+			"url": "assets/Particle/particle_1/particle_1.json"
+		},
+		{
+			"name": "particle_1_png",
+			"type": "image",
+			"url": "assets/Particle/particle_1/particle_1.png"
+		},
+		{
+			"name": "start_bg_mp3",
+			"type": "sound",
+			"url": "assets/start_bg.mp3"
+		},
+		{
+			"name": "description_json",
+			"type": "json",
+			"url": "config/description.json"
+		}
+	],
+	"groups": [
+		{
+			"name": "preload",
+			"keys": "addition1_png,addition2_png,airplane1_png,airplane2_png,airplane3_png,explode1_mp3,explode2_mp3,explode3_mp3,bullet1_png,bullet2_png,btn_click_1_mp3,button_login_png,egret_icon_png,login_bg_jpg,fighter_bg_map1_jpg,fighter_bg_map2_jpg,fighter_bg_map3_png,particle_1_json,particle_1_png,start_bg_mp3,description_json"
+		}
+	]
+}
