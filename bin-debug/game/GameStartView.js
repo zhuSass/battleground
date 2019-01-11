@@ -25,8 +25,6 @@ var GameStartView = (function (_super) {
         var loginDisplay = this.createBitmapByName("login_bg_jpg");
         var stageW = Const.SCENT_WIDTH;
         var stageH = Const.SCENT_HEIGHT;
-        // loginDisplay.width = stageW;
-        // loginDisplay.height = stageH;
         this.addChild(loginDisplay);
         var text = new egret.TextField();
         text.textColor = 0xffffff;
@@ -85,7 +83,7 @@ var GameStartView = (function (_super) {
     };
     GameStartView.prototype.onLoadBtnComplete = function (event) {
         this.isBtnSoundDone = true; // 加载完成
-        // this.onButtonClick();
+        this.onButtonClick();
     };
     /**
      * 点击按钮

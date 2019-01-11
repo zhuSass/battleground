@@ -4,6 +4,7 @@ var __reflect = (this && this.__reflect) || function (p, c, t) {
 var Tools = (function () {
     function Tools() {
     }
+    /**碰撞检测**/
     Tools.hitTest = function (obj1, obj2) {
         var rect1 = obj1.getBounds();
         var rect2 = obj2.getBounds();

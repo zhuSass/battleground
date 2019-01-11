@@ -15,9 +15,13 @@ var FighterAirplane = (function (_super) {
         var _this = _super.call(this) || this;
         _this.airplaneConfig = FighterAirplane.airplaneList[airplaneType];
         _this.airplaneType = airplaneType;
+        // 飞机显示对象
         var texture = RES.getRes(_this.airplaneConfig.textureName);
         _this.bmp = new egret.Bitmap(texture);
         _this.addChild(_this.bmp);
+        // 爆炸粒子显示对象
+        _this.createExplodeParticle();
+        _this.addChild(_this.particleExplode);
         // 加载爆炸音频
         if (!FighterAirplane.explodeSound[airplaneType]) {
             FighterAirplane.explodeSound[airplaneType] = RES.getRes(_this.airplaneConfig.explodeSoundName);
@@ -76,14 +80,9 @@ var FighterAirplane = (function (_super) {
     FighterAirplane.prototype.destroyAirplane = function (parentView, isDestroy) {
         var _this = this;
         if (isDestroy === void 0) { isDestroy = true; }
-        // 
         var channe;
         if (isDestroy) {
-            // 爆炸粒子
-            this.createExplodeParticle();
-            this.addChild(this.particleExplode);
             this.particleExplode.start();
-            // 爆炸声
             channe = FighterAirplane.explodeSound[this.airplaneType].play(0, 1);
             channe.volume = 0.5;
         }

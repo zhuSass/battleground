@@ -4,7 +4,7 @@ class GameStartView extends egret.Sprite {
     /**按钮点击音乐**/ 
     private btnSound: egret.Sound;
     /**点击按钮声音是否加载完**/
-    private isBtnSoundDone: Boolean;
+    private isBtnSoundDone: boolean;
     constructor() {
         super();
         this.createChildren();
@@ -18,8 +18,6 @@ class GameStartView extends egret.Sprite {
         let loginDisplay = this.createBitmapByName("login_bg_jpg");
         let stageW = Const.SCENT_WIDTH;
         let stageH = Const.SCENT_HEIGHT;
-        // loginDisplay.width = stageW;
-        // loginDisplay.height = stageH;
         this.addChild(loginDisplay);
 
         var text:egret.TextField = new egret.TextField();
@@ -84,7 +82,7 @@ class GameStartView extends egret.Sprite {
     }
     private onLoadBtnComplete(event:egret.Event):void {
         this.isBtnSoundDone = true; // 加载完成
-        // this.onButtonClick();
+        this.onButtonClick();
     }
     /**
      * 点击按钮

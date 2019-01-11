@@ -7,7 +7,9 @@ var __reflect = (this && this.__reflect) || function (p, c, t) {
 var Const = (function () {
     function Const() {
     }
+    /**容器宽**/
     Const.SCENT_WIDTH = 0;
+    /**容器高**/
     Const.SCENT_HEIGHT = 0;
     Const.GamePoxY = 0;
     return Const;

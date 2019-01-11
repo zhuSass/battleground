@@ -46,6 +46,23 @@ var GameFightOneView = (function (_super) {
         this.gameStart();
         //预创建
         this.preCreatedInstance();
+        // "resource/eui_skins/ProgressBarSkin.exml"
+        var exml = "<e:ProgressBar xmlns:e=\"http://ns.egret.com/eui\">\n                <e:Skin>\n                    <e:Image id=\"thumb\" width=\"100%\" height=\"100%\" source=\"resource/assets/progressBar.png\"/>\n                    <e:Label id=\"labelDisplay\" textColor=\"0xffffff\" horizontalCenter=\"0\" verticalCenter=\"0\"/>\n                </e:Skin>\n            </e:ProgressBar>";
+        var clazz = EXML.parse(exml);
+        var progressBar = new clazz();
+        progressBar.x = 10;
+        progressBar.y = 10;
+        progressBar.width = 500;
+        progressBar.height = 20;
+        progressBar.minimum = 100;
+        progressBar.maximum = 100;
+        this.addChild(progressBar);
+        // this.addEventListener(egret.Event.ENTER_FRAME,function(e:egret.Event):void {
+        //     progressBar.value += add;
+        //     if(progressBar.value >= progressBar.maximum || progressBar.value <= progressBar.minimum) {
+        //         add = -add;
+        //     }
+        // },null);
     };
     /**预创建一些对象，减少游戏时的创建消耗*/
     GameFightOneView.prototype.preCreatedInstance = function () {
@@ -93,10 +110,14 @@ var GameFightOneView = (function (_super) {
     /**响应Touch*/
     GameFightOneView.prototype.touchHandler = function (evt) {
         if (evt.type == egret.TouchEvent.TOUCH_MOVE) {
-            var tx = evt.localX;
+            var tx = evt.localX - (this.myFighter.width / 2);
             tx = Math.max(0, tx);
             tx = Math.min(Const.SCENT_WIDTH - this.myFighter.width, tx);
+            var ty = evt.localY - (this.myFighter.height / 2);
+            ty = Math.max(0, ty);
+            ty = Math.min(Const.SCENT_HEIGHT - this.myFighter.height, ty);
             this.myFighter.x = tx;
+            this.myFighter.y = ty;
         }
     };
     /**创建子弹(包括我的子弹和敌机的子弹)*/
@@ -243,7 +264,6 @@ var GameFightOneView = (function (_super) {
                 theFighter.stopFire();
                 theFighter.removeEventListener("createBullet", this.createBulletHandler, this);
                 theFighter.destroyAirplane(this);
-                // this.removeChild(theFighter);
                 this.enemyFighters.splice(this.enemyFighters.indexOf(theFighter), 1);
                 FighterAirplane.reclaim(theFighter);
             }

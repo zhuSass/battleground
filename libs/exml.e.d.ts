@@ -22,9 +22,7 @@ declare module skins{
 	class PanelSkin extends eui.Skin{
 	}
 }
-declare module skins{
-	class ProgressBarSkin extends eui.Skin{
-	}
+declare class NewFile extends eui.Skin{
 }
 declare module skins{
 	class RadioButtonSkin extends eui.Skin{

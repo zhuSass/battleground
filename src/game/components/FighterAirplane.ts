@@ -92,10 +92,13 @@ class FighterAirplane extends egret.Sprite{
 
         this.airplaneConfig = FighterAirplane.airplaneList[airplaneType];
         this.airplaneType = airplaneType;
+        // 飞机显示对象
         const texture:egret.Texture = RES.getRes(this.airplaneConfig.textureName);
         this.bmp = new egret.Bitmap(texture);
         this.addChild(this.bmp);
-
+        // 爆炸粒子显示对象
+        this.createExplodeParticle();
+        this.addChild(this.particleExplode);
         // 加载爆炸音频
         if (!FighterAirplane.explodeSound[airplaneType]) {
             FighterAirplane.explodeSound[airplaneType] = RES.getRes(this.airplaneConfig.explodeSoundName);
@@ -128,19 +131,13 @@ class FighterAirplane extends egret.Sprite{
      * @param parentView 当前显示对象的父级
      * @param isDestroy 是否销毁当前对象,默认true
      * **/
-    public destroyAirplane(parentView:GameFightOneView, isDestroy:boolean=true):void {
-        // 
+    public destroyAirplane(parentView:egret.Sprite, isDestroy:boolean=true):void {
         let channe:egret.SoundChannel;
         if (isDestroy) {
-            // 爆炸粒子
-            this.createExplodeParticle();
-            this.addChild(this.particleExplode);
             this.particleExplode.start();
-            // 爆炸声
             channe =  FighterAirplane.explodeSound[this.airplaneType].play(0, 1);
             channe.volume = 0.5;
         }
-        
 
         let timer:egret.Timer=new egret.Timer(500,1);
         timer.addEventListener(egret.TimerEvent.TIMER,() => {

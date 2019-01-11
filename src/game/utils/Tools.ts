@@ -1,4 +1,5 @@
 class Tools {
+    /**碰撞检测**/
     public static hitTest(obj1:egret.DisplayObject,obj2:egret.DisplayObject):boolean {
         var rect1:egret.Rectangle = obj1.getBounds();
             var rect2:egret.Rectangle = obj2.getBounds();
