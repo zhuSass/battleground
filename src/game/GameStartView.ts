@@ -82,7 +82,7 @@ class GameStartView extends egret.Sprite {
     }
     private onLoadBtnComplete(event:egret.Event):void {
         this.isBtnSoundDone = true; // 加载完成
-        this.onButtonClick();
+        // this.onButtonClick();
     }
     /**
      * 点击按钮
