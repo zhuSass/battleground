@@ -2,10 +2,11 @@
  * 场景1
  * **/ 
 class GameFightOneView extends egret.Sprite {
-    /**@private*/
         private stageW:number;
         /**@private*/
         private stageH:number;
+        /**我的飞机生命条显示对象**/
+        private myProgressBar:eui.ProgressBar;
         /**开始按钮*/
         private btnStart;
         /**可滚动背景*/
@@ -42,37 +43,15 @@ class GameFightOneView extends egret.Sprite {
             this.bg = new FighterBgMap();//创建可滚动的背景
             this.addChild(this.bg);
             //我的飞机
+            this.createMyAirplaneLife();
             this.myFighter = new FighterAirplane("airplane1");
             this.myFighter.y = Const.SCENT_HEIGHT-this.myFighter.height-50;
             this.addChild(this.myFighter);
             this.gameStart();
             //预创建
             this.preCreatedInstance();
-            // "resource/eui_skins/ProgressBarSkin.exml"
 
-            var exml = 
-             `<e:ProgressBar xmlns:e="http://ns.egret.com/eui">
-                <e:Skin>
-                    <e:Image id="thumb" width="100%" height="100%" source="resource/assets/progressBar.png"/>
-                    <e:Label id="labelDisplay" textColor="0xffffff" horizontalCenter="0" verticalCenter="0"/>
-                </e:Skin>
-            </e:ProgressBar>`;
-
-            var clazz = EXML.parse(exml);
-            var progressBar = new clazz();
-            progressBar.x = 10;
-            progressBar.y = 10;
-            progressBar.width = 500;
-            progressBar.height = 20;
-            progressBar.minimum = 100;
-            progressBar.maximum = 100;
-            this.addChild(progressBar);
-            // this.addEventListener(egret.Event.ENTER_FRAME,function(e:egret.Event):void {
-            //     progressBar.value += add;
-            //     if(progressBar.value >= progressBar.maximum || progressBar.value <= progressBar.minimum) {
-            //         add = -add;
-            //     }
-            // },null);
+            
         }
         /**预创建一些对象，减少游戏时的创建消耗*/
         private preCreatedInstance():void {
@@ -102,6 +81,27 @@ class GameFightOneView extends egret.Sprite {
                 let enemyFighter = objArr.pop();
                 FighterAirplane.reclaim(enemyFighter);
             }
+        }
+        /**创建我的飞机生命条**/
+        private createMyAirplaneLife():void {
+            var exml = 
+             `<e:ProgressBar xmlns:e="http://ns.egret.com/eui">
+                <e:Skin>
+                    <e:Image  width="100%" height="100%" source="resource/assets/progressBarBg.png"/>
+                    <e:Image id="thumb" width="100%" height="100%" source="resource/assets/progressBar.png"/>
+                </e:Skin>
+            </e:ProgressBar>`;
+
+            const progressBar = EXML.parse(exml);
+            this.myProgressBar = new progressBar();
+            this.myProgressBar.x = 10;
+            this.myProgressBar.y = 10;
+            this.myProgressBar.width = 300;
+            this.myProgressBar.height = 20;
+            this.myProgressBar.minimum = 0;
+            this.myProgressBar.maximum = 100;
+            this.myProgressBar.value = 100;
+            this.addChild(this.myProgressBar);
         }
         /**游戏开始*/
         private gameStart():void{
@@ -249,8 +249,10 @@ class GameFightOneView extends egret.Sprite {
                 bullet = this.enemyBullets[i];
                 if(Tools.hitTest(this.myFighter,bullet)) {
                     this.myFighter.airplaneConfig.currentBlood -= 1;
-                    if(delBullets.indexOf(bullet)==-1)
+                    this.myProgressBar.value = (this.myFighter.airplaneConfig.currentBlood / this.myFighter.airplaneConfig.blood) * 100;
+                    if(delBullets.indexOf(bullet)==-1) {
                         delBullets.push(bullet);
+                    }
                 }
             }
             //敌机的撞击可以消灭我

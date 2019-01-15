@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:ProgressBar xmlns:e="http://ns.egret.com/eui" width="408" height="28">
+    <e:Skin>
+        <e:Image  width="100%" height="100%" source="resource/assets/progressBarBg.png"/>
+        <e:Image id="thumb" width="100%" height="100%" source="resource/assets/progressBar.png"/>
+        <e:Label id="labelDisplay" textColor="0xffffff" horizontalCenter="0" verticalCenter="0"/>
+    </e:Skin>
+</e:ProgressBar>

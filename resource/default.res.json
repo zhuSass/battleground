@@ -119,12 +119,17 @@
 			"name": "description2_json",
 			"type": "json",
 			"url": "config/description.json"
+		},
+		{
+			"name": "progressBarBg_png",
+			"type": "image",
+			"url": "assets/progressBarBg.png"
 		}
 	],
 	"groups": [
 		{
 			"name": "preload",
-			"keys": "egret_icon_png,description_json,addition1_png,addition2_png,airplane1_png,airplane2_png,airplane3_png,explode1_mp3,explode2_mp3,explode3_mp3,bullet1_png,bullet2_png,btn_click_1_mp3,button_login_png,login_bg_jpg,fighter_bg_map1_jpg,fighter_bg_map2_jpg,fighter_bg_map3_png,particle_1_json,particle_1_png,progressBar_png,start_bg_mp3,egret_icon2_png,description2_json"
+			"keys": "egret_icon_png,description_json,addition1_png,addition2_png,airplane1_png,airplane2_png,airplane3_png,explode1_mp3,explode2_mp3,explode3_mp3,bullet1_png,bullet2_png,btn_click_1_mp3,button_login_png,login_bg_jpg,fighter_bg_map1_jpg,fighter_bg_map2_jpg,fighter_bg_map3_png,particle_1_json,particle_1_png,progressBar_png,start_bg_mp3,egret_icon2_png,description2_json,progressBarBg_png"
 		}
 	]
 }

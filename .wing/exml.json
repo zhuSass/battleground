@@ -1,0 +1,24 @@
+{
+  "1684b0a978e": {
+    "path": "..\\resource\\components\\MyBloodFlow.ts",
+    "class": "MyBloodFlow",
+    "parentPath": ""
+  },
+  "global": {
+    "globalAutoLayerMarkEnable": true,
+    "gridColor": 8421504,
+    "gridEnabled": false,
+    "gridSize": 20,
+    "globalAdsorbEnable": false
+  },
+  "1684b7cfaf6": {
+    "guideLinesEnabled": false,
+    "backgroundX": 0,
+    "backgroundY": 0,
+    "backgroundWidth": -1,
+    "backgroundHeight": -1,
+    "useBgImage": true,
+    "useBgColor": true,
+    "backgroundAlpha": 100
+  }
+}

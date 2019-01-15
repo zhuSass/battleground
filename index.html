@@ -13,11 +13,15 @@
     <style>
         html, body {
             -ms-touch-action: none;
-            background: #888888;
+            background: #000000;
             padding: 0;
             border: 0;
             margin: 0;
             height: 100%;
+        }
+        * {
+            padding: 0;
+            margin: 0;
         }
     </style>
 </head>
@@ -26,10 +30,10 @@
     <div style="margin: auto;width: 100%;height: 100%;" class="egret-player"
          data-entry-class="Main"
          data-orientation="auto"
-         data-scale-mode="showAll"
+         data-scale-mode="fixedHeight"
          data-frame-rate="30"
          data-content-width="640"
-         data-content-height="1136"
+         data-content-height="1136" 
          data-multi-fingered="2"
          data-show-fps="false" data-show-log="false"
          data-show-fps-style="x:0,y:0,size:12,textColor:0xffffff,bgAlpha:0.9">
