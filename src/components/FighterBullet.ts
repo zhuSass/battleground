@@ -1,4 +1,8 @@
 class FighterBullet extends egret.Bitmap {
+    /**子弹类型配置信息**/
+    public static FighterBullet: {
+    };
+
     /**缓存子弹对象**/
     private static cacheDict:Object = {};
     /**生产*/

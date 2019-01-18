@@ -10,7 +10,7 @@ class FighterAirplane extends egret.Sprite{
     private fireTimer:egret.Timer;
     /**飞机爆炸粒子对象**/
     private particleExplode:particle.GravityParticleSystem;
-    /**飞机配置参数**/ 
+    /**飞机类型配置参数**/ 
     public airplaneConfig:{
         /**创建子弹的时间间隔*/
         fireDelay:number,

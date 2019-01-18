@@ -13,7 +13,7 @@
 		"eui.VScrollBar": "resource/eui_skins/VScrollBarSkin.exml",
 		"eui.VSlider": "resource/eui_skins/VSliderSkin.exml",
 		"eui.ItemRenderer": "resource/eui_skins/ItemRendererSkin.exml",
-		"MyBloodFlow": "resource/eui_skins/MyBloodFlow.exml"
+		"MyBloodFlow": "resource/ui_components/MyBloodFlow.exml"
 	},
 	"autoGenerateExmlsList": true,
 	"exmls": [
@@ -22,6 +22,7 @@
 		"resource/eui_skins/HScrollBarSkin.exml",
 		"resource/eui_skins/HSliderSkin.exml",
 		"resource/eui_skins/ItemRendererSkin.exml",
+		"resource/eui_skins/MyBloodFlow.exml",
 		"resource/eui_skins/PanelSkin.exml",
 		"resource/eui_skins/ProgressBarSkin.exml",
 		"resource/eui_skins/RadioButtonSkin.exml",
