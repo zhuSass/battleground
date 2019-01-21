@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<e:ProgressBar xmlns:e="http://ns.egret.com/eui">
-    <e:Skin>
-        <e:Image  width="100%" height="100%" source="https://dufangyu.com/resource/assets/progressBarBg.png"/>
-        <e:Image id="thumb" width="100%" height="100%" source="https://dufangyu.com/resource/assets/progressBar.png"/>
-    </e:Skin>
-</e:ProgressBar>

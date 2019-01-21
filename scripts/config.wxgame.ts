@@ -26,6 +26,7 @@ const config: ResourceManagerConfig = {
             }
         }
         else if (command == 'publish') {
+            console.log('2--------');
             return {
                 outputDir,
                 commands: [

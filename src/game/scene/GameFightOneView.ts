@@ -6,7 +6,7 @@ class GameFightOneView extends egret.Sprite {
         /**@private*/
         private stageH:number;
         /**我的飞机生命条显示对象**/
-        private myProgressBar:TestB;
+        private myProgressBar:eui.ProgressBar;
         /**开始按钮*/
         private btnStart;
         /**可滚动背景*/
@@ -43,8 +43,6 @@ class GameFightOneView extends egret.Sprite {
             this.bg = new FighterBgMap();//创建可滚动的背景
             this.addChild(this.bg);
             //我的飞机
-            // EXML.load("resource/ui_components/MyBloodFlow.exml",this.createMyAirplaneLife,this);
-            // RES.getResByUrl("https://dufangyu.com/resource/ui_components/MyBloodFlow.exml", this.createMyAirplaneLife, this);
             this.createMyAirplaneLife();
             this.myFighter = new FighterAirplane("airplane1");
             this.myFighter.y = Const.SCENT_HEIGHT-this.myFighter.height-50;
@@ -86,29 +84,9 @@ class GameFightOneView extends egret.Sprite {
         }
         /**创建我的飞机生命条**/
         private createMyAirplaneLife():void {
-            // var exml = 
-            //  `<e:ProgressBar xmlns:e="http://ns.egret.com/eui">
-            //     <e:Skin>
-            //         <e:Image  width="100%" height="100%" source="resource/assets/progressBarBg.png"/>
-            //         <e:Image id="thumb" width="100%" height="100%" source="resource/assets/progressBar.png"/>
-            //     </e:Skin>
-            // </e:ProgressBar>`;
-
-            // const progressBar = EXML.parse(exml);
-            // 'resource/ui_components/MyBloodFlow.exml'
-            // const clazz = RES.getResByUrl("https://dufangyu.com/resource/ui_components/MyBloodFlow.exml");
-            
-            // this.myProgressBar = new eui.ProgressBar();
-            // this.myProgressBar.skinName = data;
-            this.myProgressBar = new TestB();
+            this.myProgressBar = new BloodFlowSkin();
             this.myProgressBar.x = 10;
-            this.myProgressBar.y = 10;
-            this.myProgressBar.width = 300;
-            this.myProgressBar.height = 20;
-            this.myProgressBar.minimum = 0;
-            this.myProgressBar.maximum = 100;
-            this.myProgressBar.value = 100;
-            console.log(this.myProgressBar);
+            this.myProgressBar.y = 60;
             this.addChild(this.myProgressBar);
         }
         /**游戏开始*/

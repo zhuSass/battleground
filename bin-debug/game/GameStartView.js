@@ -59,11 +59,10 @@ var GameStartView = (function (_super) {
         加载背景声音
     **/
     GameStartView.prototype.loadBgSound = function () {
-        var sound = new egret.Sound();
-        ;
         //sound 加载完成监听
-        sound.addEventListener(egret.Event.COMPLETE, this.onLoadBgComplete, this);
-        sound.load("resource/assets/start_bg.mp3");
+        var sound = RES.getRes("start_bg_mp3");
+        var channel = sound.play();
+        channel.volume = 0;
     };
     GameStartView.prototype.onLoadBgComplete = function (event) {
         //获取加载到的 Sound 对象
@@ -76,25 +75,16 @@ var GameStartView = (function (_super) {
         加载按钮点击声音
     **/
     GameStartView.prototype.loadBtnClickSound = function () {
-        this.btnSound = new egret.Sound();
-        //sound 加载完成监听
-        this.btnSound.addEventListener(egret.Event.COMPLETE, this.onLoadBtnComplete, this);
-        this.btnSound.load("resource/assets/Button/btn_click_1.mp3");
-    };
-    GameStartView.prototype.onLoadBtnComplete = function (event) {
-        this.isBtnSoundDone = true; // 加载完成
-        this.onButtonClick();
+        this.btnSound = RES.getRes("btn_click_1_mp3");
     };
     /**
      * 点击按钮
      * Click the button
      */
     GameStartView.prototype.onButtonClick = function () {
-        if (this.isBtnSoundDone) {
-            //播放音乐
-            var channel = this.btnSound.play(0, 1);
-            channel.volume = 0.8;
-        }
+        //播放音乐
+        var channel = this.btnSound.play(0, 1);
+        channel.volume = 0.8;
         GameSceneView._gameScene.play();
         this.removeAll();
     };

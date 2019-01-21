@@ -1,5 +1,6 @@
 class Main extends eui.UILayer {
     private _scene:GameSceneView;
+    private loadingView:LoadingUI;
     protected createChildren(): void {
         super.createChildren();
 
@@ -35,13 +36,12 @@ class Main extends eui.UILayer {
 
     private async loadResource() {
         try {
-            const loadingView = new LoadingUI();
-            this.stage.addChild(loadingView);
+            this.loadingView = new LoadingUI();
+            this.stage.addChild(this.loadingView);
             // await RES.loadConfig("resource/default.res.json", "resource/");
             await RES.loadConfig("/default.res.json", "https://dufangyu.com/resource/");
             await this.loadTheme();
-            await RES.loadGroup("preload", 0, loadingView);
-            this.stage.removeChild(loadingView);
+            await RES.loadGroup("preload", 0, this.loadingView);
         }
         catch (e) {
             console.error(e);
@@ -59,12 +59,12 @@ class Main extends eui.UILayer {
 
         })
     }
-
     /**
      * 创建场景界面
      * Create scene interface
      */
     protected createGameScene(): void {
+        this.stage.removeChild(this.loadingView);
         this._scene = new GameSceneView();
         this._scene.width=Const.SCENT_WIDTH;
         this._scene.height=Const.SCENT_HEIGHT;

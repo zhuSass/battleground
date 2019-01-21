@@ -40,6 +40,8 @@ var GameFightOneView = (function (_super) {
         this.bg = new FighterBgMap(); //创建可滚动的背景
         this.addChild(this.bg);
         //我的飞机
+        // EXML.load("resource/ui_components/MyBloodFlow.exml",this.createMyAirplaneLife,this);
+        // RES.getResByUrl("https://dufangyu.com/resource/ui_components/MyBloodFlow.exml", this.createMyAirplaneLife, this);
         this.createMyAirplaneLife();
         this.myFighter = new FighterAirplane("airplane1");
         this.myFighter.y = Const.SCENT_HEIGHT - this.myFighter.height - 50;
@@ -79,16 +81,9 @@ var GameFightOneView = (function (_super) {
     };
     /**创建我的飞机生命条**/
     GameFightOneView.prototype.createMyAirplaneLife = function () {
-        var exml = "<e:ProgressBar xmlns:e=\"http://ns.egret.com/eui\">\n                <e:Skin>\n                    <e:Image  width=\"100%\" height=\"100%\" source=\"resource/assets/progressBarBg.png\"/>\n                    <e:Image id=\"thumb\" width=\"100%\" height=\"100%\" source=\"resource/assets/progressBar.png\"/>\n                </e:Skin>\n            </e:ProgressBar>";
-        var progressBar = EXML.parse(exml);
-        this.myProgressBar = new progressBar();
+        this.myProgressBar = new BloodFlowSkin();
         this.myProgressBar.x = 10;
         this.myProgressBar.y = 10;
-        this.myProgressBar.width = 300;
-        this.myProgressBar.height = 20;
-        this.myProgressBar.minimum = 0;
-        this.myProgressBar.maximum = 100;
-        this.myProgressBar.value = 100;
         this.addChild(this.myProgressBar);
     };
     /**游戏开始*/
@@ -232,6 +227,7 @@ var GameFightOneView = (function (_super) {
             bullet = this.enemyBullets[i];
             if (Tools.hitTest(this.myFighter, bullet)) {
                 this.myFighter.airplaneConfig.currentBlood -= 1;
+                console.log(this.myProgressBar.value);
                 this.myProgressBar.value = (this.myFighter.airplaneConfig.currentBlood / this.myFighter.airplaneConfig.blood) * 100;
                 if (delBullets.indexOf(bullet) == -1) {
                     delBullets.push(bullet);

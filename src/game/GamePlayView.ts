@@ -21,6 +21,11 @@ class GamePlayView extends egret.Sprite{
                 this.sp.addChild(game1);
                 this.target = game1;
                 break;
+            case 2:
+                const game2: GameFightTwoView = new GameFightTwoView();
+                this.sp.addChild(game2);
+                this.target = game2;
+                break;
          }
     }
 }

@@ -28,6 +28,11 @@ var GamePlayView = (function (_super) {
                 this.sp.addChild(game1);
                 this.target = game1;
                 break;
+            case 2:
+                var game2 = new GameFightTwoView();
+                this.sp.addChild(game2);
+                this.target = game2;
+                break;
         }
     };
     return GamePlayView;
