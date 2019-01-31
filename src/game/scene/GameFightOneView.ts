@@ -5,6 +5,8 @@ class GameFightOneView extends egret.Sprite {
         private stageW:number;
         /**@private*/
         private stageH:number;
+        /**我的得分对象**/
+        private fraction:egret.TextField;
         /**我的飞机生命条显示对象**/
         private myProgressBar:eui.ProgressBar;
         /**开始按钮*/
@@ -46,12 +48,21 @@ class GameFightOneView extends egret.Sprite {
             this.createMyAirplaneLife();
             this.myFighter = new FighterAirplane("airplane1");
             this.myFighter.y = Const.SCENT_HEIGHT-this.myFighter.height-50;
+            this.myFighter.touchEnabled = true;
             this.addChild(this.myFighter);
             this.gameStart();
+            // 我的分数
+            this.myFraction();
+
+            var circle:egret.Shape = new egret.Shape();
+            circle.graphics.beginFill(0x0000ff);
+            circle.graphics.drawCircle(25,25,25);
+            circle.graphics.endFill();
+            this.addChild(circle);
+
+            this.mask = circle;
             //预创建
             this.preCreatedInstance();
-
-            
         }
         /**预创建一些对象，减少游戏时的创建消耗*/
         private preCreatedInstance():void {
@@ -89,13 +100,26 @@ class GameFightOneView extends egret.Sprite {
             this.myProgressBar.y = 60;
             this.addChild(this.myProgressBar);
         }
+        /**我的得分**/
+        myFraction(fraction:number=0) {
+            if (!this.fraction) {
+                this.fraction = new egret.TextField(); 
+                this.fraction.y = 60;
+                this.addChild(this.fraction);
+            }
+            GameData.fraction += fraction;
+            this.fraction.text = `得分:${GameData.fraction}`; 
+            this.fraction.x = Const.SCENT_WIDTH - (this.fraction.width + 20);
+        }
+        /**更新我的生命条**/
+        updataMyProgressBar() {
+            this.myProgressBar.value = (this.myFighter.airplaneConfig.currentBlood / this.myFighter.airplaneConfig.blood) * 100;
+        }
         /**游戏开始*/
         private gameStart():void{
-            this.myScore = 0;
             this.bg.start();
-            this.touchEnabled=true;
             this.addEventListener(egret.Event.ENTER_FRAME,this.gameViewUpdate,this);
-            this.addEventListener(egret.TouchEvent.TOUCH_MOVE,this.touchHandler,this);
+            this.myFighter.addEventListener(egret.TouchEvent.TOUCH_MOVE,this.touchHandler,this);
             this.myFighter.x = (Const.SCENT_WIDTH-this.myFighter.width)/2;
             this.myFighter.fire();//开火
             this.myFighter.airplaneConfig.currentBlood = 10;
@@ -105,12 +129,15 @@ class GameFightOneView extends egret.Sprite {
         }
         /**响应Touch*/
         private touchHandler(evt:egret.TouchEvent):void{
+            let x = evt.stageX;
+            let y = evt.stageY;
+
             if(evt.type==egret.TouchEvent.TOUCH_MOVE)
             {
-                let tx:number = evt.localX - (this.myFighter.width / 2);
+                let tx:number = x - (this.myFighter.width / 2);
                 tx = Math.max(0,tx);
                 tx = Math.min(Const.SCENT_WIDTH-this.myFighter.width,tx);
-                let ty:number = evt.localY - (this.myFighter.height / 2);
+                let ty:number = y - (this.myFighter.height / 2);
                 ty = Math.max(0,ty);
                 ty = Math.min(Const.SCENT_HEIGHT-this.myFighter.height,ty);
 
@@ -169,7 +196,6 @@ class GameFightOneView extends egret.Sprite {
                     myBulletsCount--;
                 }
                 bullet.y -= 12 * speedOffset;
-                  
             }
             //敌人飞机运动
             let theFighter:FighterAirplane;
@@ -235,8 +261,6 @@ class GameFightOneView extends egret.Sprite {
                 bullet = this.enemyBullets[i];
                 if(Tools.hitTest(this.myFighter,bullet)) {
                     this.myFighter.airplaneConfig.currentBlood -= 1;
-                    console.log(this.myProgressBar.value)
-                    this.myProgressBar.value = (this.myFighter.airplaneConfig.currentBlood / this.myFighter.airplaneConfig.blood) * 100;
                     if(delBullets.indexOf(bullet)==-1) {
                         delBullets.push(bullet);
                     }
@@ -261,7 +285,7 @@ class GameFightOneView extends egret.Sprite {
                         this.enemyBullets.splice(this.enemyBullets.indexOf(bullet),1);
                     FighterBullet.reclaim(bullet);
                 }
-                this.myScore += delFighters.length;
+                this.myFraction(delFighters.length);
                 while(delFighters.length>0) {
                     theFighter = delFighters.pop();
                     theFighter.stopFire();
@@ -271,6 +295,7 @@ class GameFightOneView extends egret.Sprite {
                     FighterAirplane.reclaim(theFighter);
                 }
             }
+            this.updataMyProgressBar();
         }
         /**游戏结束*/
         private gameStop():void{

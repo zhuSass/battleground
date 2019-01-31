@@ -3,6 +3,8 @@ class GameStartView extends egret.Sprite {
     private textfield: egret.TextField;
     /**按钮点击音乐**/ 
     private btnSound: egret.Sound;
+    /**背景音乐**/ 
+    private bgSound: egret.SoundChannel;
     constructor() {
         super();
         this.createChildren();
@@ -55,15 +57,8 @@ class GameStartView extends egret.Sprite {
     private loadBgSound(): void {
         //sound 加载完成监听
         let sound:egret.Sound = RES.getRes("start_bg_mp3");
-        var channel:egret.SoundChannel = sound.play();
-        channel.volume = 0;
-    }
-    private onLoadBgComplete(event:egret.Event):void {
-        //获取加载到的 Sound 对象
-        let sound = <egret.Sound>event.target;
-        //播放音乐
-        var channel:egret.SoundChannel = sound.play();
-        channel.volume = 0.5;
+        this.bgSound = sound.play();
+        this.bgSound.volume = 0.5;
     }
     /**
         加载按钮点击声音
@@ -83,6 +78,7 @@ class GameStartView extends egret.Sprite {
         this.removeAll();
     }
     private removeAll():void{
+        this.bgSound.stop();
         this.removeChildren();
     }
 }

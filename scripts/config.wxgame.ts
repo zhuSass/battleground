@@ -2,6 +2,7 @@
 ///<reference path="api.d.ts"/>
 
 import * as path from 'path';
+import * as fs from 'fs';
 import { UglifyPlugin, ResSplitPlugin, CompilePlugin, ManifestPlugin, ExmlPlugin, EmitResConfigFilePlugin, TextureMergerPlugin, CleanPlugin } from 'built-in';
 import { WxgamePlugin } from './wxgame/wxgame';
 import { CustomPlugin } from './myplugin';
@@ -26,7 +27,6 @@ const config: ResourceManagerConfig = {
             }
         }
         else if (command == 'publish') {
-            console.log('2--------');
             return {
                 outputDir,
                 commands: [
